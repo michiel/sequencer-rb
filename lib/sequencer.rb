@@ -19,7 +19,6 @@ class Sequencer
   def next
     if @procs.size > 0
       @procs.shift.call(self)
-    else
     end
   end
 

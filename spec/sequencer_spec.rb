@@ -31,4 +31,25 @@ describe "Sequencer" do
 
   end
 
+  it "should reverse the sequence" do
+
+    acc = 0
+
+    seq = Sequencer.new([
+      proc { |sq|
+        acc = 1
+        sq.next
+      },
+      proc { |sq|
+        acc = 2
+        sq.next
+      }
+    ])
+    seq.reverse!
+    seq.start
+
+    acc.should == 1
+
+  end
+
 end
