@@ -3,6 +3,10 @@
 Simple library for sequencing procs/lambdas. Mainly useful for managing
 sequential asynchronous operations.
 
+== Install
+
+    ~$ gem install sequencerrb
+
 == Usage
     
     acc = 0
