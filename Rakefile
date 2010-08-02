@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "sequencer"
+    gem.name = "sequencerrb"
     gem.summary = "Simple library for sequencing procs/lambdas."
     gem.description = "Simple library for sequencing procs/lambdas. Mainly useful for managing sequential asynchronous operations."
     gem.email = "michielkalkman@gmail.com"
