@@ -14,7 +14,7 @@ describe "Sequencer" do
 
   end
 
-  it "should run two actions" do
+  it "should add two actions" do
 
     acc = 0
     f = proc { |sq|
@@ -49,6 +49,23 @@ describe "Sequencer" do
     seq.start
 
     acc.should == 1
+
+  end
+
+  it "should work with nested lexical scope" do
+
+    acc = 0
+    f = proc { |sq|
+      callback = proc {
+        acc+=1
+        sq.next
+      }
+      callback.call
+    }
+
+    Sequencer.new([f,f,f]).start
+
+    acc.should == 3
 
   end
 
