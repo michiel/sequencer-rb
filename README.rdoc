@@ -3,6 +3,19 @@
 Simple library for sequencing procs/lambdas. Mainly useful for managing
 sequential asynchronous operations.
 
+== Usage
+    
+    acc = 0
+
+    f = proc { |sq|
+      acc+=1
+      sq.next
+    }
+
+    Sequencer.new([f,f,f]).start
+
+    acc == 3 # true
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
