@@ -1,6 +1,7 @@
 = sequencer
 
-Description goes here.
+Simple library for sequencing procs/lambdas. Mainly useful for managing
+sequential asynchronous operations.
 
 == Note on Patches/Pull Requests
  
@@ -15,3 +16,4 @@ Description goes here.
 == Copyright
 
 Copyright (c) 2010 Michiel Kalkman. See LICENSE for details.
+
