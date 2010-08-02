@@ -69,4 +69,37 @@ describe "Sequencer" do
 
   end
 
+  it "should work with threads" do
+
+    acc = 0
+    f = proc { |sq|
+      Thread.new do
+        acc+=1
+        sq.next
+      end
+    }
+
+    Sequencer.new([f,f,f]).start
+
+    acc.should == 3
+
+  end
+
+  it "should fail threads with sleep because rspec doesn't do async" do
+
+    acc = 0
+    f = proc { |sq|
+      Thread.new do
+        sleep 5
+        acc+=1
+        sq.next
+      end
+    }
+
+    Sequencer.new([f,f,f]).start
+
+    acc.should == 0
+
+  end
+
 end
