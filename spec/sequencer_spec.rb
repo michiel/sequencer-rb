@@ -119,4 +119,20 @@ describe "Sequencer" do
 
   end
 
+  it "should have a working state accessor" do
+
+    acc = 0
+
+    f = proc { |cb|
+      acc+=1
+      cb.call
+    }
+
+    seq = Sequencer.new([ f, f, f ])
+
+    seq.start
+    seq.running.should == false
+
+  end
+
 end

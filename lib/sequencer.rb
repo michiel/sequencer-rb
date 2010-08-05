@@ -1,8 +1,11 @@
 # A class for running arbitrary actions in sequence.
 class Sequencer
 
+  attr_reader :running
+
   def initialize(procs=[])
-    @procs = procs
+    @procs   = procs
+    @running = false
   end
 
   # Add a function to the sequence
@@ -17,6 +20,7 @@ class Sequencer
 
   # Start running
   def start
+    @running = true
     self.next
   end
 
@@ -31,6 +35,8 @@ class Sequencer
   def next
     if @procs.size > 0
       @procs.shift.call(proc { self.next })
+    else
+      @running = false
     end
   end
 
