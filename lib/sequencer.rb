@@ -23,7 +23,7 @@ class Sequencer
   # Run the next function (if any)
   def next
     if @procs.size > 0
-      @procs.shift.call(self)
+      @procs.shift.call(proc { self.next })
     end
   end
 

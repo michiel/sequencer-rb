@@ -4,9 +4,9 @@ describe "Sequencer" do
   it "should run three actions" do
 
     acc = 0
-    f = proc { |sq|
+    f = proc { |cb|
       acc+=1
-      sq.next
+      cb.call
     }
     Sequencer.new([f,f,f]).start
 
@@ -17,9 +17,9 @@ describe "Sequencer" do
   it "should add two actions" do
 
     acc = 0
-    f = proc { |sq|
+    f = proc { |cb|
       acc+=1
-      sq.next
+      cb.call
     }
 
     seq = Sequencer.new
@@ -36,13 +36,13 @@ describe "Sequencer" do
     acc = 0
 
     seq = Sequencer.new([
-      proc { |sq|
+      proc { |cb|
         acc = 1
-        sq.next
+        cb.call
       },
-      proc { |sq|
+      proc { |cb|
         acc = 2
-        sq.next
+        cb.call
       }
     ])
     seq.reverse!
@@ -55,10 +55,10 @@ describe "Sequencer" do
   it "should work with nested lexical scope" do
 
     acc = 0
-    f = proc { |sq|
+    f = proc { |cb|
       callback = proc {
         acc+=1
-        sq.next
+        cb.call
       }
       callback.call
     }
@@ -72,10 +72,10 @@ describe "Sequencer" do
   it "should work with threads" do
 
     acc = 0
-    f = proc { |sq|
+    f = proc { |cb|
       Thread.new do
         acc+=1
-        sq.next
+        cb.call
       end
     }
 
@@ -88,11 +88,11 @@ describe "Sequencer" do
   it "should fail threads with sleep because rspec doesn't do async" do
 
     acc = 0
-    f = proc { |sq|
+    f = proc { |cb|
       Thread.new do
         sleep 5
         acc+=1
-        sq.next
+        cb.call
       end
     }
 
