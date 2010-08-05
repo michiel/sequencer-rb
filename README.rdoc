@@ -20,6 +20,8 @@ sequential asynchronous operations.
 
     acc == 3 # true
 
+Read the spec files for all the use cases.
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
