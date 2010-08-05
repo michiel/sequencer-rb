@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{sequencerrb}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michiel Kalkman"]
-  s.date = %q{2010-08-02}
+  s.date = %q{2010-08-06}
   s.description = %q{Simple library for sequencing procs/lambdas. Mainly useful for managing sequential asynchronous operations.}
   s.email = %q{michielkalkman@gmail.com}
   s.extra_rdoc_files = [
@@ -23,7 +23,10 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "lib/collector.rb",
      "lib/sequencer.rb",
+     "sequencerrb.gemspec",
+     "spec/collector_spec.rb",
      "spec/sequencer_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
@@ -35,6 +38,7 @@ Gem::Specification.new do |s|
   s.summary = %q{Simple library for sequencing procs/lambdas.}
   s.test_files = [
     "spec/spec_helper.rb",
+     "spec/collector_spec.rb",
      "spec/sequencer_spec.rb"
   ]
 
