@@ -102,4 +102,21 @@ describe "Sequencer" do
 
   end
 
+  it "should allow nested usage" do
+
+    acc = 0
+
+    f = proc { |cb|
+        acc+=1
+        cb.call
+    }
+
+    Sequencer.new([ f, f, f,
+                  Sequencer.new([f,f]).start_callback
+    ]).start
+
+    acc.should == 5
+
+  end
+
 end

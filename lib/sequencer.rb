@@ -20,6 +20,13 @@ class Sequencer
     self.next
   end
 
+  # Return a proc to trigger the start
+  def start_callback
+    proc {
+      self.start
+    }
+  end
+
   # Run the next function (if any)
   def next
     if @procs.size > 0
