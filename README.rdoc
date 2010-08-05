@@ -11,9 +11,9 @@ sequential asynchronous operations.
     
     acc = 0
 
-    f = proc { |sq|
+    f = proc { |cb|
       acc+=1
-      sq.next
+      cb.call
     }
 
     Sequencer.new([f,f,f]).start
