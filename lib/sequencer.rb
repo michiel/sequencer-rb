@@ -3,19 +3,19 @@ class Sequencer
 
   attr_reader :running
 
-  def initialize(procs=[])
-    @procs   = procs
+  def initialize(lambdas=[])
+    @lambdas = lambdas
     @running = false
   end
 
   # Add a function to the sequence
   def add(f)
-    @procs.push(f)
+    @lambdas.push(f)
   end
 
   # Reverse the order of the sequence
   def reverse!
-    @procs.reverse!
+    @lambdas.reverse!
   end
 
   # Start running
@@ -24,17 +24,17 @@ class Sequencer
     self.next
   end
 
-  # Return a proc to trigger the start
+  # Return a lambda to trigger the start
   def start_callback
-    proc {
+    lambda {
       self.start
     }
   end
 
   # Run the next function (if any)
   def next
-    if @procs.size > 0
-      @procs.shift.call(proc { self.next })
+    if @lambdas.size > 0
+      @lambdas.shift.call(lambda { self.next })
     else
       @running = false
     end
