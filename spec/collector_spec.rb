@@ -3,14 +3,14 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 describe "Collector" do
 
   it "should do something" do
-    f = proc {|st|
+    f = lambda {|st|
       st.collect += 1
-      st.proc_finished
+      st.lambda_finished
     }
 
     col = Collector.new(
       [f,f,f], 
-      proc {|st|
+      lambda {|st|
       }
     )
     col.collect = 0
