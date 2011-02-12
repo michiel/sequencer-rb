@@ -1,7 +1,9 @@
 = sequencer
 
-Simple library for sequencing procs/lambdas. Mainly useful for managing
-sequential asynchronous operations.
+Library for sequencing procs/lambdas. Mainly useful for managing
+sequential or parallel asynchronous operations.
+
+See <https://github.com/michiel/sequencer-js> for some background.
 
 == Install
 
